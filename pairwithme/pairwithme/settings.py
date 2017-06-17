@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pairwithmeapp.apps.PairwithmeappConfig',
+    'api.apps.ApiConfig',
     'webpack_loader',
 ]
 
