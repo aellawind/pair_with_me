@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
 urlpatterns = [
@@ -26,3 +27,5 @@ urlpatterns = [
     url(r'^food/(?P<pk>[0-9]+)/$', views.FoodDetail.as_view()),
     url(r'^wine/(?P<pk>[0-9]+)/$', views.WineDetail.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
