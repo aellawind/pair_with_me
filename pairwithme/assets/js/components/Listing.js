@@ -12,7 +12,6 @@ export default class Listing extends React.Component {
             <div className="listing">
             	<Hero />
             	<Board />
-                THIS IS THE LISTING
             </div>
         );
   }

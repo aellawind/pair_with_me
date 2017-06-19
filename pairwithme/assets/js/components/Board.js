@@ -6,13 +6,20 @@ import Square from './Square';
 /* Board component where we will render the squares
  */
 export default class Board extends React.Component {
-    render() {
+    renderSquare(wine) {
         return (
-            <div className="header">
-                <Square />
-                <Square />
-                <Square />
-                <Square />
+            <div key={wine.id}>
+                <Square wine={wine} />
+            </div>
+        )
+    }
+
+    render() {
+        const {wines} = this.props
+
+        return (
+            <div>
+                { wines.map(this.renderSquare) }
             </div>
         );
   }

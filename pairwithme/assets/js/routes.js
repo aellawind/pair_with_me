@@ -8,7 +8,7 @@ import Listing from './components/Listing';
 import NotFoundPage from './components/NotFound';
 
 const routes = (
-    <Route path="/" component={Layout}>
+    <Route path="/">
     	<IndexRoute component={Main} />
     	<Route path="listing/:listingId" component={Listing} />
         <Route path="*" component={NotFoundPage} /> // * Maps to all other pages

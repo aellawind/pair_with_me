@@ -9,15 +9,32 @@ import Board from './Board';
  */
 
 export default class Main extends React.Component {
+    fetchWines() {
+        return fetch('/wine').then((response) => {
+            return response.json()
+        }).then((data) => {
+            this.setState({
+                'wines': data
+            })
+        })
+    }
+
+    componentDidMount() {
+        this.fetchWines()
+    }
+
     render() {
+        if (!this.state || !this.state.wines) {
+            return null
+        }
+
         return (
             <Layout>
                 <Header />
                 <div className="app-container">
-                    Put the feed in here.
-                    <Board />
+                    <Board wines={this.state.wines}/>
                 </div>
             </Layout>
         );
-  }
+    }
 }
