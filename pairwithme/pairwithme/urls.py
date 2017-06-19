@@ -26,6 +26,10 @@ urlpatterns = [
     url(r'^wine/$', views.WineList.as_view()),
     url(r'^food/(?P<pk>[0-9]+)/$', views.FoodDetail.as_view()),
     url(r'^wine/(?P<pk>[0-9]+)/$', views.WineDetail.as_view()),
+    # If none of the above match, we just render the original base page
+    # Which will then route based off the React app
+    # and show a 404 if necessary
+    url(r'^(?:.*)/?$', TemplateView.as_view(template_name='index.html')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

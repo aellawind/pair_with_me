@@ -1,14 +1,16 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React, { Component } from 'react'
+import { Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
+import routes from './routes';
 
-class App extends React.Component {
-	render() {
-		return (
-			<h1>HI KATIAAA</h1>
-		)
-	}
+
+class App extends Component {
+    render() {
+        return (
+            <Router history={browserHistory} routes={routes} />
+        )
+    }
 }
-
 
 ReactDOM.render(<App />, document.getElementById('container'));
 
