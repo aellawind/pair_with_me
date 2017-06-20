@@ -79,18 +79,20 @@ TEMPLATES = [
 
 STATICFILES_DIRS = (
     #This lets Django's collectstatic store our bundles
-    os.path.join(BASE_DIR, 'assets'), 
+    os.path.join(BASE_DIR, 'assets'),
 )
 
 WSGI_APPLICATION = 'pairwithme.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+## These settings will be updated a little bit when it comes to deployment
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'PAIR_WITH_ME_MAIN',
+        'USER': 'DB_USER',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '3307',
     }
 }
 
