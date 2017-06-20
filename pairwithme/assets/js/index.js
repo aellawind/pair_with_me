@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Router, Route, Link, IndexRoute, browserHistory} from 'react-router';
 import routes from './routes';
 import css from './index.css';
-import 'whatwg-fetch'
+import 'whatwg-fetch';
 
 
 class App extends Component {

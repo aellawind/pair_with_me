@@ -12,7 +12,13 @@ export default class Layout extends React.Component {
             <div className="app-container">
                 <header>
                 </header>
+                <div> HI KATIA</div>
                 <div className="app-content">{this.props.children}</div>
+                <footer>
+                    <p id="footer">
+                        FOOOOOTER
+                    </p>
+                </footer>
             </div>
         );
   }
