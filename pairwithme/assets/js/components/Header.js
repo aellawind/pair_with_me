@@ -9,7 +9,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className="header">
-                THIS IS THE HEADER / SEARCH VIEW
+                <input type="text" className="searchBox" placeholder="Search"></input>
             </div>
         );
   }

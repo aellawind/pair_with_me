@@ -16,9 +16,9 @@ export default class Square extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="squareContainer">
                 <img src={this.getImageUrl()} />
-                <h1>{this.props.wine.name}</h1>
+                <p>{this.props.wine.name}</p>
             </div>
         );
   }

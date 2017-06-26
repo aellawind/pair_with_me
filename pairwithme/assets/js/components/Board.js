@@ -18,7 +18,7 @@ export default class Board extends React.Component {
         const {wines} = this.props
 
         return (
-            <div>
+            <div className="board">
                 { wines.map(this.renderSquare) }
             </div>
         );
