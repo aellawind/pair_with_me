@@ -17,13 +17,13 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from rest_framework.urlpatterns import format_suffix_patterns
-from api import views
+from api import views, search
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
-    url(r'^api/foods/$', views.FoodList.as_view()),
-    url(r'^api/wines/$', views.WineList.as_view()),
+    url(r'^api/foods?$', views.FoodList.as_view()),
+    url(r'^api/wines?$', views.WineList.as_view()),
     url(r'^api/foods/(?P<pk>[0-9]+)/$', views.FoodDetail.as_view()),
     url(r'^api/wines/(?P<pk>[0-9]+)/$', views.WineDetail.as_view()),
     # If none of the above match, we just render the original base page
