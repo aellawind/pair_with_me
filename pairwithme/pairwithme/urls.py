@@ -22,10 +22,10 @@ from api import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
-    url(r'^food/$', views.FoodList.as_view()),
-    url(r'^wine/$', views.WineList.as_view()),
-    url(r'^food/(?P<pk>[0-9]+)/$', views.FoodDetail.as_view()),
-    url(r'^wine/(?P<pk>[0-9]+)/$', views.WineDetail.as_view()),
+    url(r'^api/foods/$', views.FoodList.as_view()),
+    url(r'^api/wines/$', views.WineList.as_view()),
+    url(r'^api/foods/(?P<pk>[0-9]+)/$', views.FoodDetail.as_view()),
+    url(r'^api/wines/(?P<pk>[0-9]+)/$', views.WineDetail.as_view()),
     # If none of the above match, we just render the original base page
     # Which will then route based off the React app
     # and show a 404 if necessary

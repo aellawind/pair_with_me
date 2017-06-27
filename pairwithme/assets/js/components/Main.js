@@ -10,7 +10,7 @@ import Board from './Board';
 
 export default class Main extends React.Component {
     fetchWines() {
-        return fetch('/wine/').then((response) => {
+        return fetch('/api/wines/').then((response) => {
             return response.json()
         }).then((data) => {
             this.setState({
