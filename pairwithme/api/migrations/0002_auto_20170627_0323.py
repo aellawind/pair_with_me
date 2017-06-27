@@ -12,10 +12,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='food',
-            name='wines',
-        ),
         migrations.AddField(
             model_name='food',
             name='description',
@@ -25,10 +21,5 @@ class Migration(migrations.Migration):
             model_name='wine',
             name='description',
             field=models.CharField(blank=True, default='', max_length=1000),
-        ),
-        migrations.AlterField(
-            model_name='wine',
-            name='foods',
-            field=models.ManyToManyField(related_name='wines', to='api.Food'),
         ),
     ]

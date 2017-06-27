@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
 from rest_framework.urlpatterns import format_suffix_patterns
-from api import views, search
+from api import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

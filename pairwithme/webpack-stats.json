@@ -1,1 +1,1 @@
-{"status":"done","chunks":{"main":[{"name":"bundle.js","path":"/Users/katia/side_stuff/pair_with_me/pairwithme/assets/bundles/bundle.js"}]}}
+{"status":"done","chunks":{"main":[{"name":"bundle.js","path":"/Users/katia/side_stuff/pair_with_me/pairwithme/assets/bundles/bundle.js"}]},"error":"ModuleBuildError","message":"Module build failed: Error: ENOENT: no such file or directory, open '/Users/katia/side_stuff/pair_with_me/pairwithme/assets/js/components/Header.js'\n    at Error (native)"}

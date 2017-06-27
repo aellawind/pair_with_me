@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Layout from './Layout';
-import Header from './Header';
+import SearchHeader from './SearchHeader';
 import Board from './Board';
 
 /* Main page that renders the feed and the search area
@@ -30,7 +30,7 @@ export default class Main extends React.Component {
 
         return (
             <Layout>
-                <Header />
+                <SearchHeader />
                 <div className="app-container">
                     <Board wines={this.state.wines}/>
                 </div>

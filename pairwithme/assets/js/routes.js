@@ -10,7 +10,7 @@ import NotFoundPage from './components/NotFound';
 const routes = (
     <Route path="/">
     	<IndexRoute component={Main} />
-    	<Route path="wines/:listingId" component={Listing} />
+    	<Route path="wines/:wine_id" component={Listing} />
         <Route path="*" component={NotFoundPage} /> // * Maps to all other pages
     </Route>
 );
