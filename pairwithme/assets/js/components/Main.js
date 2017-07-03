@@ -19,6 +19,18 @@ export default class Main extends React.Component {
         })
     }
 
+    searchWines(searchQuery) {
+        let url = '/api/wines?search=' + searchQuery;
+
+        return fetch(url).then((response) => {
+            return response.json();
+        }).then((data) => {
+            this.setState({
+                'wines': data
+            })
+        })
+    }
+
     componentDidMount() {
         this.fetchWines()
     }
@@ -30,7 +42,9 @@ export default class Main extends React.Component {
 
         return (
             <Layout>
-                <SearchHeader />
+                <SearchHeader
+                    submitSearch={this.searchWines.bind(this)}
+                />
                 <div className="app-container">
                     <Board wines={this.state.wines}/>
                 </div>
