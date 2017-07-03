@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import django_filters.rest_framework
 from rest_framework import (
     generics,
     mixins,
@@ -22,8 +21,8 @@ from api.serializers import (
 class FoodList(generics.ListCreateAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
-    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
-    filter_fields = ('name', 'description')
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name', 'description')
 
 
 class FoodDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):

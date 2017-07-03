@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'webpack_loader',
-    'django_filters',
 ]
 
 WEBPACK_LOADER = {
