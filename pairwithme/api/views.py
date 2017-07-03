@@ -4,6 +4,7 @@ import django_filters.rest_framework
 from rest_framework import (
     generics,
     mixins,
+    filters,
 )
 
 from api.models import (
@@ -36,8 +37,8 @@ class FoodDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
 class WineList(generics.ListCreateAPIView):
     queryset = Wine.objects.all()
     serializer_class = WineSerializer
-    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
-    filter_fields = ('name', 'description')
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name', 'description')
 
 
 class WineDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
