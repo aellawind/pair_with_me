@@ -1,0 +1,16 @@
+{
+  "name": "pair_with_me",
+  "install": "bash .cursor/install.sh",
+  "start": "bash .cursor/start.sh",
+  "terminals": [
+    {
+      "name": "webpack",
+      "command": "bash .cursor/webpack-watch.sh"
+    },
+    {
+      "name": "django",
+      "command": "bash .cursor/runserver.sh"
+    }
+  ],
+  "ports": [8000]
+}
