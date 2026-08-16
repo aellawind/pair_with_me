@@ -35,7 +35,10 @@ echo "==> [install] Installing backend dependencies"
 export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
 # shellcheck disable=SC1091
 . "${NVM_DIR}/nvm.sh"
+nvm install 10 >/dev/null
 nvm use 10 >/dev/null
+# Ensure the Node 10 toolchain wins over any node shim earlier on PATH.
+export PATH="$(dirname "$(nvm which 10)"):${PATH}"
 
 echo "==> [install] Installing frontend dependencies"
 cd "${APP_DIR}"
