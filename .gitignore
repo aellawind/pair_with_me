@@ -1,6 +1,9 @@
 *.pyc
 .vms/
 env/
+.venv/
 pairwithme/node_modules/
+pairwithme/package-lock.json
 db.sqlite3
 pairwithme/assets/bundles/
+pairwithme/webpack-stats.json
