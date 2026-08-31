@@ -1,0 +1,18 @@
+{
+  "name": "pair_with_me",
+  "user": "ubuntu",
+  "install": "bash scripts/cloud/install.sh",
+  "start": "bash scripts/cloud/start.sh",
+  "terminals": [
+    {
+      "name": "django",
+      "command": "bash scripts/cloud/run-server.sh"
+    }
+  ],
+  "ports": [
+    {
+      "name": "django",
+      "port": 8000
+    }
+  ]
+}
