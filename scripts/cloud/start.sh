@@ -12,13 +12,18 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 APP_DIR="${REPO_ROOT}/pairwithme"
 VENV_PY="${REPO_ROOT}/.venv/bin/python"
-SOCK="/run/mysqld/mysqld.sock"
+# Django's DB HOST is 'localhost', so the MySQL client connects via its
+# compiled-in default UNIX socket (/var/run/mysqld/mysqld.sock) and ignores the
+# TCP port. On some base images /var/run is a symlink to /run; on others it is a
+# real directory, so we create both runtime dirs and bind mariadbd's socket at
+# that exact client-default path to work everywhere.
+SOCK="/var/run/mysqld/mysqld.sock"
 DB_PORT="3307"
 DB_NAME="PAIR_WITH_ME_MAIN"
 DB_PASS="password"
 
 echo "==> [start] Ensuring MariaDB runtime directory"
-sudo install -d -o mysql -g mysql /run/mysqld
+sudo install -d -o mysql -g mysql /run/mysqld /var/run/mysqld
 
 if [ ! -d /var/lib/mysql/mysql ]; then
   echo "==> [start] Initialising MariaDB data directory"
