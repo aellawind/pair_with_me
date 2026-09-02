@@ -29,7 +29,7 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [
+        rules: [
             //a regexp that tells webpack use the following loaders on all
             //.js and .jsx files
             {test: /\.jsx?$/,
@@ -38,21 +38,21 @@ module.exports = {
                 exclude: /node_modules/,
                 //use the babel loader
                 loader: 'babel-loader',
-                query: {
+                options: {
                     //specify that we will be dealing with React code
                     presets: ['react','es2015']
                 }
             },
             {test: /\.css$/,
-                loader: [ 'style-loader', 'css-loader' ]
+                use: [ 'style-loader', 'css-loader' ]
             },
         ]
     },
 
     resolve: {
         //tells webpack where to look for modules
-        modulesDirectories: ['node_modules'],
+        modules: ['node_modules'],
         //extensions that should be used to resolve modules
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     }
 }
