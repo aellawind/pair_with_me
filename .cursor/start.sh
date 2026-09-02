@@ -61,3 +61,7 @@ if [ "${WINE_COUNT:-0}" = "0" ]; then
 fi
 
 echo "start.sh: MariaDB ready on 127.0.0.1:${DB_PORT}, database ${DB_NAME} migrated and seeded"
+
+# 4. Run the Django development server in the foreground (stays attached).
+echo "start.sh: launching Django dev server on 0.0.0.0:8000"
+exec python manage.py runserver 0.0.0.0:8000
