@@ -14,8 +14,12 @@ DB_PASS="password"
 DB_PORT="3307"
 
 # 1. Start MariaDB on port 3307 if it is not already listening.
+# Use a per-boot log path and clear any stale, root-owned copy that a base
+# snapshot may have baked in (an unwritable log path would break the redirect).
+MARIADB_LOG="/tmp/pwm-mariadb.log"
 if ! ss -ltn 2>/dev/null | grep -q ":${DB_PORT} "; then
-  sudo bash -c "nohup mariadbd-safe --port=${DB_PORT} --bind-address=127.0.0.1 >/tmp/mariadb.log 2>&1 &"
+  sudo rm -f "$MARIADB_LOG" 2>/dev/null || true
+  sudo bash -c "nohup mariadbd-safe --port=${DB_PORT} --bind-address=127.0.0.1 >'${MARIADB_LOG}' 2>&1 &"
 fi
 
 # Wait for the server socket to come up.
