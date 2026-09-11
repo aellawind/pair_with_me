@@ -4,3 +4,4 @@ env/
 pairwithme/node_modules/
 db.sqlite3
 pairwithme/assets/bundles/
+pairwithme/webpack-stats.json
