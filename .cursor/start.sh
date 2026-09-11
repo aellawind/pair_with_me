@@ -11,20 +11,26 @@ PY="$HOME/miniconda3/envs/pwm/bin/python"
 # Django's settings use HOST=localhost PORT=3307, so mysqlclient connects over
 # the local socket. mysqlclient's compiled default socket path is
 # /var/run/mysqld/mysqld.sock, so MariaDB must expose it there.
-SOCK="/var/run/mysqld/mysqld.sock"
+RUNDIR="/var/run/mysqld"
+SOCK="$RUNDIR/mysqld.sock"
+PIDFILE="$RUNDIR/mysqld.pid"
 DB_PORT=3307
 DB_NAME=PAIR_WITH_ME_MAIN
 DB_PASS=password
 
+# The packaged config points pid-file at /run/mysqld, which is a *separate*
+# directory from /var/run/mysqld on these images (/var/run is not symlinked to
+# /run). Keep the socket and pid file together under $RUNDIR and override both
+# explicitly so MariaDB doesn't fail writing its PID file.
 echo "==> Ensuring MariaDB runtime directory"
-sudo mkdir -p /var/run/mysqld
-sudo chown mysql:mysql /var/run/mysqld
+sudo mkdir -p "$RUNDIR"
+sudo chown mysql:mysql "$RUNDIR"
 
 if sudo mysqladmin --socket="$SOCK" ping >/dev/null 2>&1; then
   echo "==> MariaDB already running"
 else
   echo "==> Starting MariaDB on port ${DB_PORT}"
-  sudo bash -c "nohup mariadbd --user=mysql --port=${DB_PORT} --socket=${SOCK} > /var/log/mariadb-pwm.log 2>&1 &"
+  sudo bash -c "nohup mariadbd --user=mysql --port=${DB_PORT} --socket=${SOCK} --pid-file=${PIDFILE} > /var/log/mariadb-pwm.log 2>&1 &"
   for _ in $(seq 1 60); do
     if sudo mysqladmin --socket="$SOCK" ping >/dev/null 2>&1; then break; fi
     sleep 1
