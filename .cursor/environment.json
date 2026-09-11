@@ -1,0 +1,17 @@
+{
+  "name": "pair_with_me",
+  "user": "ubuntu",
+  "install": "bash .cursor/install.sh",
+  "start": "bash .cursor/start.sh",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "cd pairwithme && $HOME/miniconda3/envs/pwm/bin/python manage.py runserver 0.0.0.0:8000"
+    },
+    {
+      "name": "webpack-watch",
+      "command": "cd pairwithme && PATH=\"$HOME/.nvm/versions/node/v8.17.0/bin:$PATH\" ./node_modules/.bin/webpack --config webpack.config.js --watch"
+    }
+  ],
+  "ports": [8000]
+}
